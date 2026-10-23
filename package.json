@@ -1,0 +1,9 @@
+{
+  "name": "vehicle-rental-booking-system",
+  "version": "1.0.0",
+  "scripts": {
+    "setup": "npm install --prefix server && npm install --prefix client && npm run build --prefix client",
+    "build": "npm run build --prefix client",
+    "start": "node server/index.js"
+  }
+}
