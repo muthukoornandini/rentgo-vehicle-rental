@@ -1,62 +1,133 @@
-# 🚗 RentGo – Vehicle Rental Booking System
+# RentGo – Vehicle Rental Booking System
 
-Browse vehicles and manage bookings. Full-stack, cloud-ready.
+A full-stack web application that allows users to explore vehicles, book rentals, and manage their bookings online. RentGo includes an administrative dashboard for managing vehicles and handling booking requests.
 
-| Layer    | Tech                                              |
-|----------|---------------------------------------------------|
-| Frontend | HTML, CSS, JavaScript, **React.js** (Vite)        |
-| Backend  | **Node.js + Express** REST API, JWT auth, bcrypt  |
-| Storage  | JSON-file database (no DB install needed)         |
-| Deploy   | Docker / Render / Railway / AWS / any VM          |
+## 🌐 Live Demo
 
-## Features
-**Customers**
-- Browse cars, SUVs, vans, bikes and scooters without logging in
-- Pick pickup and return dates: vehicles already booked for those dates are marked unavailable
-- Search, filter by type, sort by price, live total-price estimate
-- Book a vehicle (pay at pickup), view "My Bookings", cancel pending/confirmed bookings
+**[Visit RentGo – Live Application](https://rentgo-vehicle-rental.onrender.com)**
 
-**Admin**
-- Dashboard: bookings, pending, revenue, vehicles, vehicles free today, customers
-- Manage bookings: Pending → Confirmed → Active → Completed (or Cancelled)
-- Manage vehicles: add, change price, mark under maintenance, delete
+## 📂 GitHub Repository
 
-**Smart logic**
-- **Double-booking prevention**: the server rejects any booking whose dates overlap an
-  existing Pending/Confirmed/Active booking for the same vehicle.
-- Total price and days are calculated on the server (inclusive of pickup and return day).
-- Past dates and return-before-pickup are rejected. Passwords hashed, JWT auth, admin-only routes.
+**[View Source Code on GitHub](https://github.com/muthukoornandini/rentgo-vehicle-rental)**
 
-## Run on your laptop (Windows / Mac / Linux)
-Requirements: **Node.js 18+** (https://nodejs.org)
+## ✨ Features
 
-```bash
-cd vehicle-rental
-cd server
-npm install
-npm start
+- **Vehicle Browsing:** Explore available cars, SUVs, bikes, scooters, and vans.
+- **Vehicle Details:** View rental prices, vehicle types, seating capacity, fuel type, and descriptions.
+- **User Authentication:** Register and log in to the application.
+- **Online Booking:** Select pickup and return dates, pickup location, and contact details.
+- **Availability Checking:** Check vehicle availability and prevent overlapping bookings.
+- **My Bookings:** View personal booking records and manage eligible cancellations.
+- **Admin Dashboard:** View booking statistics and manage vehicles.
+- **Booking Management:** Review booking requests and update their statuses.
+- **Responsive Interface:** Access the application through a modern web browser.
+- **Cloud Deployment:** Deploy the full-stack application using Render.
+
+## 🛠️ Technology Stack
+
+| Component | Technologies |
+|---|---|
+| Frontend | React.js, Vite |
+| Backend | Node.js, Express.js |
+| Authentication | JSON Web Tokens (JWT), bcryptjs |
+| Data Storage | JSON file-based database |
+| Styling | CSS |
+| Deployment | Render |
+| Version Control | Git, GitHub |
+| Containerization | Docker |
+
+## 🏗️ Application Architecture
+
+```text
+User / Administrator
+        |
+        v
+ React Frontend (Vite)
+        |
+        v
+ Node.js + Express API
+        |
+        v
+ JSON File Database
 ```
-Open **http://localhost:5000** (the React app is already built in `client/dist`).
 
-**Demo logins**
-- Customer: `customer@rental.com` / `customer123`
-- Admin: `admin@rental.com` / `admin123`
+## ⚙️ Getting Started Locally
 
-## Development mode (edit React code)
-Terminal 1: `cd server && npm install && npm start`
-Terminal 2: `cd client && npm install && npm run dev` → http://localhost:5173
-Rebuild for production after changes: `cd client && npm run build`
+### Prerequisites
 
-## Deploy to the cloud
-```bash
-docker build -t rentgo .
-docker run -p 5000:5000 -e JWT_SECRET=your-secret rentgo
-```
-Render.com (free): push to GitHub → New Web Service → Runtime: Docker. Set `JWT_SECRET`.
-(Free tiers reset local files; use a managed DB for permanent data.)
+- Node.js and npm
+- Git
+- A code editor such as Visual Studio Code
 
-## API summary
-`POST /api/auth/register|login` · `GET /api/vehicles?start=&end=` ·
-`POST|PUT|DELETE /api/vehicles` (admin) · `POST /api/bookings` · `GET /api/bookings/me` ·
-`PUT /api/bookings/:id/cancel` · `GET /api/bookings` (admin) · `PUT /api/bookings/:id/status` (admin) ·
-`GET /api/stats` (admin) · `GET /api/health`
+### Installation
+
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/muthukoornandini/rentgo-vehicle-rental.git
+   ```
+
+2. Open the project directory:
+
+   ```bash
+   cd rentgo-vehicle-rental
+   ```
+
+3. Install the project dependencies:
+
+   ```bash
+   npm run setup
+   ```
+
+4. Build the frontend:
+
+   ```bash
+   npm run build
+   ```
+
+5. Start the application:
+
+   ```bash
+   npm start
+   ```
+
+6. Open `http://localhost:5000` in your browser.
+
+## 🔄 How It Works
+
+1. Users register or log in.
+2. They browse vehicles and check availability.
+3. They select rental dates and submit a booking request.
+4. The application validates the requested dates and vehicle availability.
+5. The administrator reviews the request and updates its status.
+6. Users can view their booking details in their account.
+
+## 🔐 Security Considerations
+
+- Passwords are hashed using bcryptjs.
+- Authentication uses JSON Web Tokens.
+- Administrative endpoints require authentication and an administrator role.
+- Deployment secrets should be configured using environment variables.
+
+**Note:** The current version uses JSON file-based storage. Persistent database storage should be configured before using the application for production bookings.
+
+## 🚀 Future Enhancements
+
+- Integration with MongoDB or PostgreSQL.
+- Persistent cloud database storage.
+- Online payment gateway integration.
+- Email and SMS booking notifications.
+- Advanced search and filtering.
+- Booking history and reporting.
+- QR-code-based booking confirmation.
+
+## 👩‍💻 Developer
+
+**Muthukoornandini**
+
+- GitHub: [@muthukoornandini](https://github.com/muthukoornandini)
+- Live Project: [RentGo](https://rentgo-vehicle-rental.onrender.com)
+
+---
+
+*RentGo – Making vehicle rentals simple, convenient, and accessible.*
